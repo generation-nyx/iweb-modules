@@ -222,13 +222,15 @@ define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol", "c
 				stroke.setLineDash([12, 12]);
 			}
 			var labelText = feature.get('labelText');
-			if(labelText){
+			if (labelText) {
+				var cc = new contrastColor({ bgColor: strokeColor });
 				style.setText(new ol.style.Text({
 					text: labelText,
 					overflow: true,
+					placement: "line",
 					font: selected ? "bold 12px arial" : "12px arial",
 					fill: new ol.style.Fill({
-						color: new contrastColor({ bgColor: strokeColor })
+						color: cc.contrastColor()
 					}),
 					stroke: new ol.style.Stroke({
 						color: strokeColor,

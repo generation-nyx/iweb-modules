@@ -247,12 +247,13 @@ define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol", "c
 				style.getFill().setColor(fillColor);
 			}
 			if(labelText){
+				var cc = new contrastColor({ bgColor: strokeColor });
 				style.setText(new ol.style.Text({
 					text: labelText,
 					overflow: true,
 					font: selected ? "bold 12px arial" : "12px arial",
 					fill: new ol.style.Fill({
-						color: new contrastColor({ bgColor: strokeColor })
+						color: cc.contrastColor()
 					}),
 					stroke: new ol.style.Stroke({
 						color: strokeColor,
