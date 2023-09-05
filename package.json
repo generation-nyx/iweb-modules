@@ -11,7 +11,8 @@
   "dependencies": {
     "@turf/boolean-intersects": "^6.5.0",
     "loglevel": "^1.7.1",
-    "usng.js": "^0.4.5"
+    "usng.js": "^0.4.5",
+    "contrast-color": "^1.0.1"
   },
   "peerDependencies": {
     "jquery": "3.x",

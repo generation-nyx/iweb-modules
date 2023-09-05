@@ -27,8 +27,8 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol"],
-		function(Core, MapModule, Interactions, ol) {
+define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol", "contrast-color"],
+		function(Core, MapModule, Interactions, ol, contrastColor) {
     return Ext.define("drawmenu.ShapeController", {
        extend: 'Ext.app.ViewController',
        alias: "controller.drawmenu.shapebutton",
@@ -247,7 +247,18 @@ define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol"],
 				style.getFill().setColor(fillColor);
 			}
 			if(labelText){
-				style.getText().setText(labelText);
+				style.setText(new ol.style.Text({
+					text: labelText,
+					overflow: true,
+					font: selected ? "bold 12px arial" : "12px arial",
+					fill: new ol.style.Fill({
+						color: contrastColor({ bgColor: strokeColor })
+					}),
+					stroke: new ol.style.Stroke({
+						color: strokeColor,
+						width: 3
+					})
+				}));
 			}
 
 			return [style];
@@ -261,8 +272,7 @@ define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol"],
 				stroke: new ol.style.Stroke({
 					color: 'black',
 					width: 3
-				}),
-				text: new ol.style.Text({})
+				})
 			});
 		}
 
