@@ -226,6 +226,7 @@ define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol"],
 
 			var fillColor = feature.get("fillColor"),
 				opacity = feature.get("opacity"),
+				labelText = feature.get('labelText'),
 				strokeColor = feature.get("strokeColor"),
 				strokeWidth = feature.get("strokeWidth");
 
@@ -245,6 +246,9 @@ define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol"],
 			} else {
 				style.getFill().setColor(fillColor);
 			}
+			if(labelText){
+				style.getText().setText(labelText);
+			}
 
 			return [style];
 		},
@@ -257,7 +261,8 @@ define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol"],
 				stroke: new ol.style.Stroke({
 					color: 'black',
 					width: 3
-				})
+				}),
+				text: new ol.style.Text({})
 			});
 		}
 

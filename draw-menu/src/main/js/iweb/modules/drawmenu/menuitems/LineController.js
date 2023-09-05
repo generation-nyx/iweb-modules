@@ -221,6 +221,10 @@ define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol"],
 			if (dashStyle === "dashed") {
 				stroke.setLineDash([12, 12]);
 			}
+			var labelText = feature.get('labelText');
+			if(labelText){
+				style.getText().setText(labelText);
+			}
 
 			return [style];
 		},
@@ -230,7 +234,8 @@ define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol"],
 				stroke: new ol.style.Stroke({
 					color: 'black',
 					width: 9
-				})
+				}),
+				text: new ol.style.Text({})
 			});
 		}
 	});
