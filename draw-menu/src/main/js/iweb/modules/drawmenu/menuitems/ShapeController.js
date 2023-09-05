@@ -252,7 +252,7 @@ define(["iweb/CoreModule", "iweb/modules/MapModule", "../Interactions", "ol", "c
 					overflow: true,
 					font: selected ? "bold 12px arial" : "12px arial",
 					fill: new ol.style.Fill({
-						color: contrastColor({ bgColor: strokeColor })
+						color: new contrastColor({ bgColor: strokeColor })
 					}),
 					stroke: new ol.style.Stroke({
 						color: strokeColor,
